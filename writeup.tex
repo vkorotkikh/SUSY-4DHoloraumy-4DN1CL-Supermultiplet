@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{wasysym}
+
+\title{Description of Code to Verify Commutators}
+\author{Wes Caldwell}
+
+\begin{document}
+\maketitle
+
+If the goal is to show that our expressions for the commutators on the Complex Linear Supermultiplet are correct, then it is sufficient to show that they both expand to the same linear combination of space-time derivatives of component fields since the set of derivatives is linearly independent. Thus, the code must efficiently and correctly expand commutator expressions and sums over both spinor indices as well as space-time indices. Mathematica is perfect for these sorts of calculations due to its incredibly powerful symbolic manipulation faculties.
+
+The code begins with a number of notation definitions; this is not strictly necessary, but makes the code much more readable. Then follows a number of definitions of our conventions for spinor and space-time metrics as well as the \gamma{} matrices. Once these definitions are established, we can then proceed to giving Mathematica replacement rules to use to simply commutator expressions. In order to prevent conflicts with built-in Mathematica operators, we use \dh{} and \DH{} as the symbolic derivatives. For each index of \dh{} and \DH{} we define them to be linear and to commute with each other. It is important to note that these definitions are one-way, i.e. $\text{\DH}_a[f+g]=\text{\DH}_a[f]+\text{\DH}_b[g]$ but not the other way around. This is to prevent the \textit{Simplify} function from entering an infinite loop.
+
+Once the basic properties of \dh{} and \DH{} are defined, the replacement rules for \DH{} on each component field are specified. These rules are simply the definitions of the Complex Linear Supermultiplet. With these in hand, we can now proceed to the actual verification of the calculations. The \textit{Simplify} command can now take our final expressions for each commutator and use the replacement rules specified above to break each expression down into a linear combination of space-time derivatives of component fields and verify that both sides are equivalent (or not).
+
+This technique isn't just limited to the Complex Linear Supermultiplet, nor calculating commutators. Variants of this program could evaluate any expression, commutators or otherwise, of any supermultiplet simply by replacing the definitions of the differential operator \DH{} with its action on any other supermultiplet.
+\end{document}
+
+
