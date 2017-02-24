@@ -1,0 +1,53 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{mmacells}
+
+
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+
+\title{Description of Complex Multiplet Coefficients.nb}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+The Mathematica notebook Complex Multiplet Coefficients.nb stores the values for various tensors in order to give numeric coefficients for the terms in the and explicitly check that the general form of the coefficients for each of the expressions in (5.4) and (5.5) are correct. This was used after hand written calculations gave some expected results to check that the various rules used to simplify the commutator expressions yielded correct results for each $a$, $b$, $c$ and $\mu$. 
+
+\\
+\\
+\indent
+The code begins by ensuring that all previous definitions, functions, etc are cleared and initiating Mathematica's Notation Package. Using the Notation Palette, the notation to be used in the code for the calculations can be defined. Notation was used to avoid the default matrix multiplication implied by a string of arrays and instead explicitly define rules for multiplying the correct indices for our tensors. The notation implemented also takes advantage of some simple defaults for later use of the Expand function. For instance since Mathematica outputs variables in alphabetical order, representing $\partial_\mu$ by $ad_\mu$ brings all partial derivatives to the front so that the superderivative operator $D_a$- represented in the code as $d_a$- can act directly on the fermionic and bosonic variables which will also fall after the derivative operator. 
+
+
+\\
+\\
+\indent
+Then the necessary tensor indices were inputed into the code as arrays with correct values at the corresponding indices.
+\\
+\\
+\indent
+Then the rules for superderivative operations in the multiplet were included using our code's notation.
+\\
+\\
+\indent
+The following code displays how an initial expression for superderivative commutators are calculated in the code, using the bosonic field $U_\mu$ as an example. Each result for some commutator on a field $\xi_\mu$ in stored in a matrix defined in the code as $Common\xi\mu$. 
+\\
+\\
+\indent
+Next, manually copying the result and using Mathematica's Expand function gives continuously simpler forms of the result as the Notation Package recognizes new ways to simplify the expression each time it parses the new input.
+\\
+\\
+\indent
+Once we get only terms that match up with the final terms found in the generalized results hand written calculations, this result for each of the indices of our $Common\xi\mu$ matrix can be compared to the individual indices given by the results of the coefficients in the general form as stated in (5.4) and (5.5).
+
+
+\end{document}
+
